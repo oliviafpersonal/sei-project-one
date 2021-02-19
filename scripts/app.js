@@ -23,16 +23,45 @@ function init() {
 
   // creating the  game grid
   
-    function createGrid(lipstickStartPosition) {
-      for (let i = 0; i < cellCount; i++) {
-        const cell = document.createElement('div')
-        cell.textContent = i
-        grid.appendChild(cell)
-        cells.push(cell) //pushing element(that the let loop creates) into empty array
-      }
-      addLipstick(lipstickStartPosition)
+  function createGrid(lipstickStartPosition) {
+    for (let i = 0; i < cellCount; i++) {
+      const cell = document.createElement('div')
+      cell.textContent = i
+      grid.appendChild(cell)
+      cells.push(cell) //pushing element(that the let loop creates) into empty array
     }
+
+    //adding the lips into the game
+    cells[1].classList.add('lipsHome')
+    cells[4].classList.add('lipsHome')
+    cells[8].classList.add('lipsHome')
+    addLipstick(lipstickStartPosition)
+  }
   
+
+  //add event listener to lips 
+
+  /*
+  function handleGameWin(event) {
+    if (event.target.classList.contains('lipsHome')) {
+      console.log('Well done!')
+    }
+  }
+
+  cells.forEach(cell => {
+    cell.addEventListener('keydown', handleGameWin)
+  })
+  */
+
+  document.querySelectorAll('.lipsHome').forEach(item => {
+    item.addEventListener('keyup', event => {
+      event.target.classList.contains('lipsHome')
+      console.log('Well done!')
+    })
+  })
+
+
+
 
   // * add lipstick to grid 
   function addLipstick(position) {
@@ -64,17 +93,8 @@ function init() {
     addLipstick(lipstickCurrentPosition)
   }
 
-  // adding the goal - homes 
-  const lipsHomeClass = document.querySelector('.lipsHome')
-  const lipsPosition = 2
-
-  function addLips(position){
-    cells[position].classList.add('.lipsHome')
-    addLips(lipsPosition)
-  }
 
   
-
 
 
 
@@ -89,3 +109,5 @@ function init() {
 
 
 window.addEventListener('DOMContentLoaded', init)
+
+
