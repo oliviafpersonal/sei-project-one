@@ -39,3 +39,10 @@ body {
   height: 10%;
   width: 10%;
 }
+
+.lipsHome {
+  background-image: url(../lips.gif);
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
