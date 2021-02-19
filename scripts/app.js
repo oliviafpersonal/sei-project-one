@@ -39,29 +39,6 @@ function init() {
   }
   
 
-  //add event listener to lips 
-
-  /*
-  function handleGameWin(event) {
-    if (event.target.classList.contains('lipsHome')) {
-      console.log('Well done!')
-    }
-  }
-
-  cells.forEach(cell => {
-    cell.addEventListener('keydown', handleGameWin)
-  })
-  */
-
-  document.querySelectorAll('.lipsHome').forEach(item => {
-    item.addEventListener('keyup', event => {
-      event.target.classList.contains('lipsHome')
-      console.log('Well done!')
-    })
-  })
-
-
-
 
   // * add lipstick to grid 
   function addLipstick(position) {
@@ -73,6 +50,7 @@ function init() {
     cells[position].classList.remove(lipstickClass)
   }
 
+  //lipstick/player movement 
   function handleKeyUp(event) {
     const key = event.keyCode //event.keyCode finds out which key is clicked - each key registers a new number 
 
@@ -88,6 +66,10 @@ function init() {
       lipstickCurrentPosition += width
     } else {
       console.log('INVALID KEY')
+    }
+
+    if (lipstickCurrentPosition === 1 || lipstickCurrentPosition === 4 || lipstickCurrentPosition === 8) {
+      window.alert('You won!! Well done') 
     }
     
     addLipstick(lipstickCurrentPosition)

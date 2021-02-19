@@ -46,3 +46,11 @@ body {
   background-size: contain;
   cursor: pointer;
 }
+
+.lipstickLid {
+  background-image: url(../lipsticklid.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
+
