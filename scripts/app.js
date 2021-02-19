@@ -9,6 +9,9 @@ function init() {
   function startGame() {
     console.log('game has comenced', startGame)
   }
+
+
+  
   
 
 
@@ -19,6 +22,9 @@ function init() {
   const lipstickClass = 'lipstick'
   const lipstickStartPosition = 95
   let lipstickCurrentPosition = 95
+
+  let lidTimer 
+  let counter = 0
 
 
   // creating the  game grid
@@ -35,10 +41,20 @@ function init() {
     cells[1].classList.add('lipsHome')
     cells[4].classList.add('lipsHome')
     cells[8].classList.add('lipsHome')
-    addLipstick(lipstickStartPosition)
+
+    lidTimer = setInterval(() => {
+      for (let i = 50; i < cells.length - 20; i++) {
+        if (i % 2 === 0) {
+          cells[i].classList.add('lipstickLid')
+        } 
+        clearInterval(lidTimer)
+        return
+      }
+
+      addLipstick(lipstickStartPosition)
+    }, 2000)
   }
   
-
 
   // * add lipstick to grid 
   function addLipstick(position) {
