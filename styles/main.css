@@ -54,3 +54,9 @@ body {
   cursor: pointer;
 }
 
+.hand {
+  background-image: url(../hand.gif);
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}

@@ -22,6 +22,7 @@ function init() {
   const lipstickClass = 'lipstick'
   const lipstickStartPosition = 95
   let lipstickCurrentPosition = 95
+  let lipstickLidCurrentPosition = null
 
   let lidTimer 
   let counter = 0
@@ -42,19 +43,34 @@ function init() {
     cells[4].classList.add('lipsHome')
     cells[8].classList.add('lipsHome')
 
-    lidTimer = setInterval(() => {
-      for (let i = 50; i < cells.length - 20; i++) {
-        if (i % 2 === 0) {
-          cells[i].classList.add('lipstickLid')
-        } 
-        clearInterval(lidTimer)
-        return
-      }
+    cells[23].classList.add('hand')
 
+    cells[50].classList.add('lipstickLid')
+    
+    lidTimer = setInterval(() => {
+      counter ++
+      if (counter === 2){
+        cells[50].classList.remove('lipstickLid')
+      }
+      clearInterval(lidTimer)
+      cells[51].classList.add('lipstickLid')
+      lidTimer = setInterval(() => {
+        if (counter === 2){
+          cells[51].classList.remove('lipstickLid')
+        }
+      }) 
+      //return
+      
       addLipstick(lipstickStartPosition)
-    }, 2000)
+    }, 1500)
+    
   }
   
+  for (let i = 50; i < cells.length - 40; i++) {
+    cells[i].classList.add('lipstickLid')
+  } 
+
+
 
   // * add lipstick to grid 
   function addLipstick(position) {
