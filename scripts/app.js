@@ -3,6 +3,13 @@ function init() {
   const startButton = document.getElementById('start')
   const grid = document.querySelector('.grid')
   //const lipstick = document.querySelector('.lipstick')
+  const gridWrapper = document.querySelector('.grid-wrapper')
+
+  //scores 
+  const scoreDisplay = document.querySelector('#score-display')
+  const livesDisplay = document.querySelector('#lives-display')
+  
+  let score = 0
 
 
   //button starts the game
@@ -43,10 +50,18 @@ function init() {
     cells[4].classList.add('lipsHome')
     cells[8].classList.add('lipsHome')
 
+    //adding hand to the game 
     cells[23].classList.add('hand')
 
+    //adding lipstick lid to the game 
     cells[50].classList.add('lipstickLid')
+
+    //if player lands on a div containing both classes, user looses 
+    //if (cells.target.classList.contains('lipstickLid') && cells.target.classList.contains('lipstick')) {
+    //  console.log('interception!')
+    //}
     
+    /*
     lidTimer = setInterval(() => {
       counter ++
       if (counter === 2){
@@ -61,14 +76,16 @@ function init() {
       }) 
       //return
       
-      addLipstick(lipstickStartPosition)
     }, 1500)
+    */
+    addLipstick(lipstickStartPosition)
     
   }
-  
+  /*
   for (let i = 50; i < cells.length - 40; i++) {
     cells[i].classList.add('lipstickLid')
   } 
+  */
 
 
 
@@ -94,8 +111,11 @@ function init() {
       lipstickCurrentPosition--
     } else if (key === 38 && lipstickCurrentPosition >= width) { //up
       lipstickCurrentPosition -= width
+      score += 10
+      scoreDisplay.innerHTML = score
     } else if (key === 40 && lipstickCurrentPosition + width <= width * width - 1) { //down
       lipstickCurrentPosition += width
+      
     } else {
       console.log('INVALID KEY')
     }
@@ -105,14 +125,22 @@ function init() {
     }
     
     addLipstick(lipstickCurrentPosition)
+
+    
   }
 
 
   
+  function handleInterception(event) {
+    if (event.target.classList.contains('lipstickLid') && event.target.classList.contains('lipstick')) {
+    //if (cells[50].classList.contains('lipstickLid') && cells[50].classList.contains('lipsitck')) {
+      console.log('interception!')
+    }
+  }
+  
 
 
-
-
+  gridWrapper.addEventListener('keyup', handleInterception)
 
   document.addEventListener('keyup', handleKeyUp)
 
