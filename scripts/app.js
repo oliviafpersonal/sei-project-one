@@ -15,11 +15,42 @@ function init() {
   //button starts the game
   function startGame() {
     console.log('game has comenced', startGame)
+    addLipstick(lipstickStartPosition)
+
+    //adding the lips into the game
+    cells[1].classList.add('lipsHome')
+    cells[4].classList.add('lipsHome')
+    cells[8].classList.add('lipsHome')
+    
+    //adding hand to the game 
+    cells[19].classList.add('hand')
+    cells[36].classList.add('hand')
+    
+        
+    //for (let i = 10; i <= cells.length - 60; i++) {
+    setInterval(() => {
+      cells.forEach((cell, index) => { 
+        if (cell.className === 'hand') {
+          cell.classList.remove('hand')
+          cells[index - 1].classList.add('hand')
+        }
+      })
+    }, 2000)
+    
+    //adding lipstick lid to the game 
+    cells[56].classList.add('lipstickLid')
+    cells[69].classList.add('lipstickLid')
+    
+    setInterval(() => {
+      cells.forEach((cell, index) => { 
+        if (cell.className === 'lipstickLid') {
+          cell.classList.remove('lipstickLid')
+          cells[index - 1].classList.add('lipstickLid')
+        }
+      })
+    }, 2000)
+      
   }
-
-
-  
-  
 
 
   const width = 10
@@ -32,11 +63,11 @@ function init() {
   let lipstickLidCurrentPosition = null
 
   let lidTimer 
-  let counter = 0
+  
 
+ 
 
   // creating the  game grid
-  
   function createGrid(lipstickStartPosition) {
     for (let i = 0; i < cellCount; i++) {
       const cell = document.createElement('div')
@@ -45,47 +76,20 @@ function init() {
       cells.push(cell) //pushing element(that the let loop creates) into empty array
     }
 
-    //adding the lips into the game
-    cells[1].classList.add('lipsHome')
-    cells[4].classList.add('lipsHome')
-    cells[8].classList.add('lipsHome')
 
-    //adding hand to the game 
-    cells[23].classList.add('hand')
-
-    //adding lipstick lid to the game 
-    cells[50].classList.add('lipstickLid')
-
-    //if player lands on a div containing both classes, user looses 
-    //if (cells.target.classList.contains('lipstickLid') && cells.target.classList.contains('lipstick')) {
-    //  console.log('interception!')
-    //}
-    
-    /*
-    lidTimer = setInterval(() => {
-      counter ++
-      if (counter === 2){
-        cells[50].classList.remove('lipstickLid')
-      }
-      clearInterval(lidTimer)
-      cells[51].classList.add('lipstickLid')
-      lidTimer = setInterval(() => {
-        if (counter === 2){
-          cells[51].classList.remove('lipstickLid')
-        }
-      }) 
-      //return
-      
-    }, 1500)
-    */
-    addLipstick(lipstickStartPosition)
-    
   }
-  /*
-  for (let i = 50; i < cells.length - 40; i++) {
-    cells[i].classList.add('lipstickLid')
-  } 
-  */
+
+    
+    
+  
+
+
+  //if player lands on a div containing both classes, user looses 
+  //if (cells.target.classList.contains('lipstickLid') && cells.target.classList.contains('lipstick')) {
+  //  console.log('interception!')
+  //}
+    
+  
 
 
 
@@ -125,15 +129,13 @@ function init() {
     }
     
     addLipstick(lipstickCurrentPosition)
-
-    
   }
 
 
   
   function handleInterception(event) {
-    if (event.target.classList.contains('lipstickLid') && event.target.classList.contains('lipstick')) {
-    //if (cells[50].classList.contains('lipstickLid') && cells[50].classList.contains('lipsitck')) {
+    //if (event.target.classList.contains('lipstickLid') && event.target.classList.contains('lipstick')) {
+    if (cells[50].classList.contains('lipstickLid') && cells[50].classList.contains('lipsitck')) {
       console.log('interception!')
     }
   }
@@ -141,6 +143,7 @@ function init() {
 
 
   gridWrapper.addEventListener('keyup', handleInterception)
+
 
   document.addEventListener('keyup', handleKeyUp)
 

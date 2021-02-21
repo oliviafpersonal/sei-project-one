@@ -8,13 +8,6 @@ body {
 }
 
 
-.lipstick {
-  background-image: url(../lipstick.gif);
-  background-repeat: no-repeat;
-  background-size: contain;
-  cursor: pointer;
-}
-
 .grid-wrapper {
   height: 100vh;
   display: flex;
@@ -56,6 +49,13 @@ body {
 
 .hand {
   background-image: url(../hand.gif);
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
+
+.lipstick {
+  background-image: url(../lipstick.gif);
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
