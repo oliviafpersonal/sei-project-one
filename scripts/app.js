@@ -23,33 +23,57 @@ function init() {
     cells[8].classList.add('lipsHome')
     
     //adding hand to the game 
+    cells[11].classList.add('hand')
+    cells[15].classList.add('hand')
     cells[19].classList.add('hand')
+    cells[21].classList.add('hand')
+    cells[24].classList.add('hand')
+    cells[28].classList.add('hand')
+    cells[30].classList.add('hand')
+    cells[33].classList.add('hand')
     cells[36].classList.add('hand')
     
-        
-    //for (let i = 10; i <= cells.length - 60; i++) {
+    
+    const river = cells.slice(10, 40)
+    //console.log(river)
+    
     setInterval(() => {
-      cells.forEach((cell, index) => { 
+      river.forEach((cell, index) => { 
         if (cell.className === 'hand') {
           cell.classList.remove('hand')
-          cells[index - 1].classList.add('hand')
+          river[index - 1].classList.add('hand')
         }
       })
     }, 2000)
-    
-    //adding lipstick lid to the game 
+
+    //adding lipstick lid to game 
+    cells[50].classList.add('lipstickLid')
+    cells[53].classList.add('lipstickLid')
     cells[56].classList.add('lipstickLid')
+    cells[61].classList.add('lipstickLid')
+    cells[65].classList.add('lipstickLid')
     cells[69].classList.add('lipstickLid')
-    
+    cells[72].classList.add('lipstickLid')
+    cells[74].classList.add('lipstickLid')
+    cells[79].classList.add('lipstickLid')
+
+
+
+    const road = cells.slice(50, 80)
+    //console.log(road)
+
     setInterval(() => {
-      cells.forEach((cell, index) => { 
+      road.forEach((cell, index) => {
         if (cell.className === 'lipstickLid') {
           cell.classList.remove('lipstickLid')
-          cells[index - 1].classList.add('lipstickLid')
+          road[index - 1].classList.add('lipstickLid')
         }
       })
     }, 2000)
-      
+
+
+
+
   }
 
 
@@ -65,7 +89,6 @@ function init() {
   let lidTimer 
   
 
- 
 
   // creating the  game grid
   function createGrid(lipstickStartPosition) {
@@ -79,17 +102,7 @@ function init() {
 
   }
 
-    
-    
-  
 
-
-  //if player lands on a div containing both classes, user looses 
-  //if (cells.target.classList.contains('lipstickLid') && cells.target.classList.contains('lipstick')) {
-  //  console.log('interception!')
-  //}
-    
-  
 
 
 
@@ -134,8 +147,8 @@ function init() {
 
   
   function handleInterception(event) {
-    //if (event.target.classList.contains('lipstickLid') && event.target.classList.contains('lipstick')) {
-    if (cells[50].classList.contains('lipstickLid') && cells[50].classList.contains('lipsitck')) {
+    if (event.target.classList.contains('lipstickLid') && event.target.classList.contains('lipstick')) {
+    //if (cells.classList.contains('lipstick') && cells.classList.contains('lipsitckLid')) {
       console.log('interception!')
     }
   }
