@@ -2,10 +2,53 @@
   box-sizing: border-box;
 }
 
+h1 {
+  text-align: center;
+  color: aliceblue;
+  font-size: 40px;
+  text-decoration: underline;
+  font-family: 'RocknRoll One', sans-serif;
+}
 
 body {
   background-color: pink;
+  
 }
+
+.header {
+  background-color: plum;
+  padding-top: 20px;
+  border-radius: 4px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  font-family: 'RocknRoll One', sans-serif;
+  color: aliceblue;
+
+}
+.controls-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+
+
+#start{
+  border-radius: 4px;
+  font-weight: bold;
+  border: none;
+  background-color: plum;
+  font-size: 30px;
+  color: aliceblue;
+  font-family: 'RocknRoll One', sans-serif;
+
+}
+
+p {
+  font-size: 30px;
+  border-radius: 4px;
+
+}
+
 
 
 .grid-wrapper {

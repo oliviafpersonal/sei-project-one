@@ -44,7 +44,7 @@ function init() {
           river[index - 1].classList.add('hand')
         }
       })
-    }, 2000)
+    }, 1000)
 
     //adding lipstick lid to game 
     cells[50].classList.add('lipstickLid')
@@ -52,7 +52,7 @@ function init() {
     cells[56].classList.add('lipstickLid')
     cells[61].classList.add('lipstickLid')
     cells[65].classList.add('lipstickLid')
-    cells[69].classList.add('lipstickLid')
+    cells[68].classList.add('lipstickLid')
     cells[72].classList.add('lipstickLid')
     cells[74].classList.add('lipstickLid')
     cells[79].classList.add('lipstickLid')
@@ -69,7 +69,7 @@ function init() {
           road[index - 1].classList.add('lipstickLid')
         }
       })
-    }, 2000)
+    }, 1000)
 
 
 
