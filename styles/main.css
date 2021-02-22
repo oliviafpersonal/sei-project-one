@@ -30,7 +30,17 @@ body {
   justify-content: space-around;
 }
 
+.riverBlue {
+  background-color: rgb(28, 83, 185);
+}
 
+.roadGrey {
+  background-color: rgb(117, 112, 112);
+}
+
+.topRow {
+  background-color: rgb(226, 43, 104);
+}
 
 #start{
   border-radius: 4px;

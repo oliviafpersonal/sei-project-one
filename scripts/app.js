@@ -11,6 +11,8 @@ function init() {
   
   let score = 0
 
+  
+
 
   //button starts the game
   function startGame() {
@@ -33,18 +35,30 @@ function init() {
     cells[33].classList.add('hand')
     cells[36].classList.add('hand')
     
-    
+    //storing river cells in a variable
     const river = cells.slice(10, 40)
     //console.log(river)
     
-    setInterval(() => {
+    
+    const handInterval = setInterval(() => {
+      //console.log(handInterval)
       river.forEach((cell, index) => { 
         if (cell.className === 'hand') {
           cell.classList.remove('hand')
           river[index - 1].classList.add('hand')
         }
+        //if (river[index === 0]) {
+        if (river[index - 1] === 0) {
+          [index + 29]
+        
+        //if (river[0].className === 'hand') {
+          //(river[0] + 29).classList.add('hand')
+          //[index + 29].classList.add('hand')
+        }
       })
     }, 1000)
+
+    
 
     //adding lipstick lid to game 
     cells[50].classList.add('lipstickLid')
@@ -58,11 +72,12 @@ function init() {
     cells[79].classList.add('lipstickLid')
 
 
-
+    //storing road cells in a variable 
     const road = cells.slice(50, 80)
     //console.log(road)
-
-    setInterval(() => {
+/*
+    const lidInterval = setInterval(() => {
+      //console.log(lidInterval)
       road.forEach((cell, index) => {
         if (cell.className === 'lipstickLid') {
           cell.classList.remove('lipstickLid')
@@ -70,7 +85,7 @@ function init() {
         }
       })
     }, 1000)
-
+*/
 
 
 
@@ -87,7 +102,10 @@ function init() {
   let lipstickLidCurrentPosition = null
 
   let lidTimer 
-  
+
+
+  const river = cells.slice(10, 40)
+  const road = cells.slice(50, 80)
 
 
   // creating the  game grid
@@ -98,9 +116,37 @@ function init() {
       grid.appendChild(cell)
       cells.push(cell) //pushing element(that the let loop creates) into empty array
     }
-
-
+    isolateHomeRow() 
+    createRiver()
+    createRoad()
   }
+  
+  
+  function isolateHomeRow () {
+    const homeRow = cells.slice(0, 10)
+    homeRow.forEach(row => {
+      row.classList.add('topRow')
+    })
+  }
+
+  function createRoad () {
+    const road = cells.slice(50, 80)
+    road.forEach(row => {
+      row.classList.add('roadGrey')
+    })
+  }
+
+  function createRiver() {
+    const river = cells.slice(10, 40)
+    river.forEach(row => {
+      row.classList.add('riverBlue')
+    })
+  }
+  
+
+
+  
+
 
 
 
@@ -140,22 +186,26 @@ function init() {
     if (lipstickCurrentPosition === 1 || lipstickCurrentPosition === 4 || lipstickCurrentPosition === 8) {
       window.alert('You won!! Well done') 
     }
+
+    if (lipstickCurrentPosition.classList.contains('lipstickLid') || lipstickCurrentPosition.classList.contains('hand')) {
+      console.log('Interception')
+    }
     
     addLipstick(lipstickCurrentPosition)
   }
 
 
-  
-  function handleInterception(event) {
-    if (event.target.classList.contains('lipstickLid') && event.target.classList.contains('lipstick')) {
-    //if (cells.classList.contains('lipstick') && cells.classList.contains('lipsitckLid')) {
-      console.log('interception!')
+  /*
+  function handleInterception() {
+    if (lipstickCurrentPosition.classList.contains('lipstickLid') || lipstickCurrentPosition.classList.contains('hand')) {
+      console.log('Interception')
     }
+    handleInterception()
   }
-  
+  //having trouble detecting when two classes are applied to the same array item
+*/
 
-
-  gridWrapper.addEventListener('keyup', handleInterception)
+  //gridWrapper.addEventListener('keyup', handleInterception)
 
 
   document.addEventListener('keyup', handleKeyUp)
@@ -167,5 +217,4 @@ function init() {
 
 
 window.addEventListener('DOMContentLoaded', init)
-
 
