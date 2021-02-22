@@ -31,7 +31,9 @@ body {
 }
 
 .riverBlue {
-  background-color: rgb(28, 83, 185);
+  background-image: url(../river.gif);
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .roadGrey {

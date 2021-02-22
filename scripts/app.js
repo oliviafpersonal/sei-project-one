@@ -9,6 +9,7 @@ function init() {
   const livesDisplay = document.querySelector('#lives-display')
   
   let score = 0
+  let livesRemaining = 3
 
   const width = 10
   const cellCount = width * width 
@@ -68,7 +69,7 @@ function init() {
 
   //button starts the game
   function startGame() {
-    console.log('game has comenced', startGame)
+    //console.log('game has comenced', startGame)
     addLipstick(lipstickStartPosition)
     
     //adding the lips into the game
@@ -134,21 +135,7 @@ function init() {
     
 
 
-
-
   }
-
-
-
-
-  
-  
-
-
-  
-
-
-
 
 
 
@@ -186,26 +173,18 @@ function init() {
     if (lipstickCurrentPosition === 1 || lipstickCurrentPosition === 4 || lipstickCurrentPosition === 8) {
       window.alert('You won!! Well done') 
     }
-
-    //if (lipstickCurrentPosition.classList.contains('lipstickLid') || lipstickCurrentPosition.classList.contains('hand')) {
-    //  console.log('Interception')
-    //}
+  
+    if (lipstickCurrentPosition.className === 'riverBlue' || lipstickCurrentPosition.className === 'lipstickLid') {
+      console.log('oops')
+      livesRemaining -- 
+      livesDisplay.innerHTML = livesRemaining
+    }
     
     addLipstick(lipstickCurrentPosition)
+
+    
+    
   }
-
-
-  /*
-  function handleInterception() {
-    if (lipstickCurrentPosition.classList.contains('lipstickLid') || lipstickCurrentPosition.classList.contains('hand')) {
-      console.log('Interception')
-    }
-    handleInterception()
-  }
-  //having trouble detecting when two classes are applied to the same array item
-*/
-
-  //gridWrapper.addEventListener('keyup', handleInterception)
 
 
   document.addEventListener('keyup', handleKeyUp)
