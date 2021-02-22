@@ -35,7 +35,11 @@ body {
 }
 
 .roadGrey {
-  background-color: rgb(117, 112, 112);
+  /*background-color: rgb(117, 112, 112);*/
+  background-image: url(../roadmarkings.jpg);
+  /*background-repeat: no-repeat;*/
+  background-size: contain;
+  cursor: pointer;
 }
 
 .topRow {

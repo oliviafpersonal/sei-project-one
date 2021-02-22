@@ -2,7 +2,6 @@ function init() {
 
   const startButton = document.getElementById('start')
   const grid = document.querySelector('.grid')
-  //const lipstick = document.querySelector('.lipstick')
   const gridWrapper = document.querySelector('.grid-wrapper')
 
   //scores 
@@ -11,87 +10,6 @@ function init() {
   
   let score = 0
 
-  
-
-
-  //button starts the game
-  function startGame() {
-    console.log('game has comenced', startGame)
-    addLipstick(lipstickStartPosition)
-
-    //adding the lips into the game
-    cells[1].classList.add('lipsHome')
-    cells[4].classList.add('lipsHome')
-    cells[8].classList.add('lipsHome')
-    
-    //adding hand to the game 
-    cells[11].classList.add('hand')
-    cells[15].classList.add('hand')
-    cells[19].classList.add('hand')
-    cells[21].classList.add('hand')
-    cells[24].classList.add('hand')
-    cells[28].classList.add('hand')
-    cells[30].classList.add('hand')
-    cells[33].classList.add('hand')
-    cells[36].classList.add('hand')
-    
-    //storing river cells in a variable
-    const river = cells.slice(10, 40)
-    //console.log(river)
-    
-    
-    const handInterval = setInterval(() => {
-      //console.log(handInterval)
-      river.forEach((cell, index) => { 
-        if (cell.className === 'hand') {
-          cell.classList.remove('hand')
-          river[index - 1].classList.add('hand')
-        }
-        //if (river[index === 0]) {
-        if (river[index - 1] === 0) {
-          [index + 29]
-        
-        //if (river[0].className === 'hand') {
-          //(river[0] + 29).classList.add('hand')
-          //[index + 29].classList.add('hand')
-        }
-      })
-    }, 1000)
-
-    
-
-    //adding lipstick lid to game 
-    cells[50].classList.add('lipstickLid')
-    cells[53].classList.add('lipstickLid')
-    cells[56].classList.add('lipstickLid')
-    cells[61].classList.add('lipstickLid')
-    cells[65].classList.add('lipstickLid')
-    cells[68].classList.add('lipstickLid')
-    cells[72].classList.add('lipstickLid')
-    cells[74].classList.add('lipstickLid')
-    cells[79].classList.add('lipstickLid')
-
-
-    //storing road cells in a variable 
-    const road = cells.slice(50, 80)
-    //console.log(road)
-/*
-    const lidInterval = setInterval(() => {
-      //console.log(lidInterval)
-      road.forEach((cell, index) => {
-        if (cell.className === 'lipstickLid') {
-          cell.classList.remove('lipstickLid')
-          road[index - 1].classList.add('lipstickLid')
-        }
-      })
-    }, 1000)
-*/
-
-
-
-  }
-
-
   const width = 10
   const cellCount = width * width 
   const cells = []
@@ -99,13 +17,14 @@ function init() {
   const lipstickClass = 'lipstick'
   const lipstickStartPosition = 95
   let lipstickCurrentPosition = 95
-  let lipstickLidCurrentPosition = null
+  let lipstickLidCurrentPosition 
+  
 
   let lidTimer 
-
-
-  const river = cells.slice(10, 40)
+  
   const road = cells.slice(50, 80)
+  const river = cells.slice(10, 40)
+
 
 
   // creating the  game grid
@@ -118,10 +37,9 @@ function init() {
     }
     isolateHomeRow() 
     createRiver()
-    createRoad()
+    //createRoad()
   }
-  
-  
+
   function isolateHomeRow () {
     const homeRow = cells.slice(0, 10)
     homeRow.forEach(row => {
@@ -142,6 +60,88 @@ function init() {
       row.classList.add('riverBlue')
     })
   }
+  
+
+
+
+
+
+  //button starts the game
+  function startGame() {
+    console.log('game has comenced', startGame)
+    addLipstick(lipstickStartPosition)
+    
+    //adding the lips into the game
+    cells[1].classList.add('lipsHome')
+    cells[4].classList.add('lipsHome')
+    cells[8].classList.add('lipsHome')
+    
+    //adding hand to the game 
+    //cells[11].classList.add('hand')
+    cells[15].classList.add('hand')
+    //cells[19].classList.add('hand')
+    //cells[21].classList.add('hand')
+    //cells[24].classList.add('hand')
+    //cells[28].classList.add('hand')
+    //cells[30].classList.add('hand')
+    //cells[33].classList.add('hand')
+    //cells[36].classList.add('hand')
+    
+    let handCurrentPosition = 15
+    
+    setInterval(() => {
+      //console.log(handInterval)
+      river.forEach((cell, index) => { 
+        if (cell.className === 'hand') {
+          cell.classList.remove('hand')
+          handCurrentPosition -= 1
+          cell[handCurrentPosition].classList.add('hand')
+          console.log(handCurrentPosition)
+        }
+        if (handCurrentPosition === 0) {
+          handCurrentPosition + width
+        }
+        
+      })
+    }, 1000)
+
+    
+
+    //adding lipstick lid to game 
+    cells[50].classList.add('lipstickLid')
+    cells[53].classList.add('lipstickLid')
+    cells[56].classList.add('lipstickLid')
+    cells[61].classList.add('lipstickLid')
+    cells[65].classList.add('lipstickLid')
+    cells[68].classList.add('lipstickLid')
+    cells[72].classList.add('lipstickLid')
+    cells[74].classList.add('lipstickLid')
+    cells[79].classList.add('lipstickLid')
+
+
+    const river = cells.slice(10, 40)
+    const lidInterval = setInterval(() => {
+      road.forEach((cell, index) => {
+        if (cell.className === 'lipstickLid') {
+          cell.classList.remove('lipstickLid')
+          road[index - 1].classList.add('lipstickLid')
+        }
+        //if (lipstickLidCurrentPosition % width !== 0) {
+        //  lipstickLidCurrentPosition + width
+        //}
+      })
+    }, 1000)
+    
+
+
+
+
+  }
+
+
+
+
+  
   
 
 
@@ -187,9 +187,9 @@ function init() {
       window.alert('You won!! Well done') 
     }
 
-    if (lipstickCurrentPosition.classList.contains('lipstickLid') || lipstickCurrentPosition.classList.contains('hand')) {
-      console.log('Interception')
-    }
+    //if (lipstickCurrentPosition.classList.contains('lipstickLid') || lipstickCurrentPosition.classList.contains('hand')) {
+    //  console.log('Interception')
+    //}
     
     addLipstick(lipstickCurrentPosition)
   }
