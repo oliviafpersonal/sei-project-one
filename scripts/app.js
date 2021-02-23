@@ -92,6 +92,9 @@ function init() {
     
     const river = cells.slice(10, 40)
 
+
+    let loop = false
+
     const handTimer = setInterval(() => {
       let handCurrentPosition = 36
       river.forEach((cell, i) => {
@@ -101,38 +104,65 @@ function init() {
           river[handCurrentPosition].classList.add('hand')
         }
       })
-      if (handCurrentPosition === 0) {
-        handCurrentPosition = width
+      if (handCurrentPosition === river[0]) {
+        handCurrentPosition += width
       }
     }, 1000)
+
+    
     
 
     //adding lipstick lid to game 
     //cells[50].classList.add('lipstickLid')
-    //cells[53].classList.add('lipstickLid')
+    cells[53].classList.add('lipstickLid')
     //cells[56].classList.add('lipstickLid')
     //cells[61].classList.add('lipstickLid')
     //cells[65].classList.add('lipstickLid')
-    cells[68].classList.add('lipstickLid')
+    //cells[68].classList.add('lipstickLid')
     //cells[72].classList.add('lipstickLid')
     //cells[74].classList.add('lipstickLid')
     //cells[79].classList.add('lipstickLid')
 
     const road = cells.slice(50, 80)
 
+    let lids = [52, 58, 65, 67, 73, 77]
+
     const lidTimer = setInterval(() => {
-      let lipstickLidCurrentPosition = 68
+      road.forEach((cell, i) => {
+        cell.classList.remove('lipstickLid')
+      })
+      lids = lids.map((index) => {
+        if (index === 50){
+          return 79
+        } else {
+          return index - 1 }
+      })
+      lids.forEach((index) => {
+        cells[index].classList.add('lipstickLid')
+      })
+    }, 1000)
+
+    /*
+    const lidTimer = setInterval(() => {
+      let lipstickLidCurrentPosition = 53
       road.forEach((cell, i) => {
         if (cell.className === 'roadGrey lipstickLid') {
           cell.classList.remove('lipstickLid')
-          lipstickLidCurrentPosition = i - 1
-          road[lipstickLidCurrentPosition].classList.add('lipstickLid')
+          console.log(lipstickLidCurrentPosition)
+          if (lipstickLidCurrentPosition === 50) {
+            lipstickLidCurrentPosition = 79
+          } else {
+            lipstickLidCurrentPosition = i - 1 
+          }
+          console.log(lipstickLidCurrentPosition)
+          road[lipstickLidCurrentPosition].classList.add('lipstickLid') 
         }
       })
-      if (lipstickLidCurrentPosition === 0) {
-        lipstickLidCurrentPosition = width
-      }
+      //if (lipstickLidCurrentPosition === 0) {
+      //  lipstickLidCurrentPosition = width
+      //}
     }, 1000)
+    */
     
     
     
@@ -174,16 +204,20 @@ function init() {
     if (lipstickCurrentPosition === 1 || lipstickCurrentPosition === 4 || lipstickCurrentPosition === 8) {
       window.alert('You won!! Well done') 
     }
-
   
-    if (cells[lipstickCurrentPosition].classList.contains('riverBlue') || cells[lipstickCurrentPosition].classList.contains('lipstickLid')) {
+    if (cells[lipstickCurrentPosition].classList.contains('hand')) {
+      livesRemaining * 1
+    } else if (cells[lipstickCurrentPosition].classList.contains('riverBlue') || cells[lipstickCurrentPosition].classList.contains('lipstickLid')) {
       console.log('oops')
       livesRemaining -- 
       livesDisplay.innerHTML = livesRemaining
       lipstickCurrentPosition = lipstickStartPosition
-    } else if (cells[lipstickCurrentPosition].classList.contains('hand')) {
-      //livesRemaining = livesRemaining 
     }
+
+
+    
+    
+    
     
     if (livesRemaining <= 0) {
       alert(`Opps! All out of lives.. but you scored ${score}`)

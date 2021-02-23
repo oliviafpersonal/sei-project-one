@@ -119,3 +119,10 @@ p {
   background-size: contain;
   cursor: pointer;
 }
+
+.splash {
+  background-image: url(../splash.gif);
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
