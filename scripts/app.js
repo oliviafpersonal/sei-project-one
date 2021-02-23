@@ -186,6 +186,10 @@ function init() {
     if (livesRemaining <= 0) {
       alert(`Opps! All out of lives.. but you scored ${score}`)
       lipstickCurrentPosition = lipstickStartPosition
+      score = 0
+      scoreDisplay.innerHTML = score
+      livesRemaining = 3
+      livesDisplay.innerHTML = livesRemaining
     }
 
     addLipstick(lipstickCurrentPosition)
