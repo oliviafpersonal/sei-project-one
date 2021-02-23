@@ -174,12 +174,16 @@ function init() {
       window.alert('You won!! Well done') 
     }
   
-    if (lipstickCurrentPosition.className === 'riverBlue' || lipstickCurrentPosition.className === 'lipstickLid') {
+    if (cells[lipstickCurrentPosition].classList.contains('riverBlue') || cells[lipstickCurrentPosition].classList.contains('lipstickLid')) {
       console.log('oops')
       livesRemaining -- 
       livesDisplay.innerHTML = livesRemaining
     }
     
+    if (livesRemaining <= 0) {
+      alert(`Opps! All out of lives.. but you scored ${score}`)
+    }
+
     addLipstick(lipstickCurrentPosition)
 
     
