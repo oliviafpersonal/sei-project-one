@@ -28,13 +28,17 @@ function init() {
   function createGrid(lipstickStartPosition) {
     for (let i = 0; i < cellCount; i++) {
       const cell = document.createElement('div')
-      cell.textContent = i
+      //cell.textContent = i
       grid.appendChild(cell)
       cells.push(cell) //pushing element(that the let loop creates) into empty array
     }
     isolateHomeRow() 
     createRiver()
     createRoad()
+    addGrassOne()
+    addGrassTwo()
+
+    
   }
 
   function isolateHomeRow () {
@@ -57,7 +61,20 @@ function init() {
       row.classList.add('riverBlue')
     })
   }
+
+  function addGrassOne() {
+    const grassPatch = cells.slice(40, 50)
+    grassPatch.forEach(row => {
+      row.classList.add('grass')
+    })
+  }
   
+  function addGrassTwo() {
+    const ladybird = cells.slice(80, 90)
+    ladybird.forEach(row => {
+      row.classList.add('prettyGrass')
+    })
+  }
 
 
 
@@ -161,13 +178,8 @@ function init() {
       livesRemaining -- 
       livesDisplay.innerHTML = livesRemaining
       lipstickCurrentPosition = lipstickStartPosition
-    }
+    } 
 
-
-    
-    
-    
-    
     if (livesRemaining <= 0) {
       alert(`Opps! All out of lives.. but you scored ${score}`)
       lipstickCurrentPosition = lipstickStartPosition

@@ -86,7 +86,7 @@ p {
 }
 
 .grid div {
-  border: 1px solid lightgrey;
+  /*border: 1px solid lightgrey;*/
   flex-grow: 1;
   height: 10%;
   width: 10%;
@@ -126,3 +126,15 @@ p {
   background-size: contain;
   cursor: pointer;
 }
+
+.grass {
+  background-image: url(../grass3.gif);
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
+
+.prettyGrass{
+  background-color: rgb(173, 86, 173);
+}
+
