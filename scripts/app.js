@@ -107,6 +107,9 @@ function init() {
     }, 1000)
     */
 
+    
+    const river = cells.slice(10, 40)
+
     const handTimer = setInterval(() => {
       let handCurrentPosition = 15
       river.forEach((cell, i) => {
@@ -120,6 +123,7 @@ function init() {
         handCurrentPosition = width
       }
     }, 1000)
+    
 
 
     //adding lipstick lid to game 
@@ -133,8 +137,7 @@ function init() {
     //cells[74].classList.add('lipstickLid')
     //cells[79].classList.add('lipstickLid')
 
-
-    const river = cells.slice(10, 40)
+    const road = cells.slice(50, 80)
     
     const lidTimer = setInterval(() => {
       let lipstickLidCurrentPosition = 68
