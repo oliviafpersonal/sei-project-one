@@ -18,7 +18,7 @@ function init() {
   const lipstickClass = 'lipstick'
   const lipstickStartPosition = 95
   let lipstickCurrentPosition = 95
-  let lipstickLidCurrentPosition 
+  
   
 
   let lidTimer 
@@ -37,7 +37,7 @@ function init() {
       cells.push(cell) //pushing element(that the let loop creates) into empty array
     }
     isolateHomeRow() 
-    //createRiver()
+    createRiver()
     createRoad()
   }
 
@@ -107,7 +107,7 @@ function init() {
     }, 1000)
     */
 
-    setInterval(() => {
+    const handTimer = setInterval(() => {
       let handCurrentPosition = 15
       river.forEach((cell, i) => {
         if (cell.className === 'riverBlue hand') {
@@ -135,7 +135,8 @@ function init() {
 
 
     const river = cells.slice(10, 40)
-    setInterval(() => {
+    
+    const lidTimer = setInterval(() => {
       let lipstickLidCurrentPosition = 68
       road.forEach((cell, i) => {
         if (cell.className === 'roadGrey lipstickLid') {
@@ -143,14 +144,14 @@ function init() {
           lipstickLidCurrentPosition = i - 1
           road[lipstickLidCurrentPosition].classList.add('lipstickLid')
         }
-        if (lipstickLidCurrentPosition === 0){
-          lipstickLidCurrentPosition = width
-        }
       })
+      if (lipstickLidCurrentPosition === 0) {
+        lipstickLidCurrentPosition = width
+      }
     }, 1000)
     
-
-
+    
+    
   }
 
 
