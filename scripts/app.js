@@ -37,8 +37,8 @@ function init() {
       cells.push(cell) //pushing element(that the let loop creates) into empty array
     }
     isolateHomeRow() 
-    createRiver()
-    //createRoad()
+    //createRiver()
+    createRoad()
   }
 
   function isolateHomeRow () {
@@ -89,7 +89,7 @@ function init() {
     //cells[36].classList.add('hand')
     
     let handCurrentPosition = 15
-    
+    /*
     setInterval(() => {
       //console.log(handInterval)
       river.forEach((cell, index) => { 
@@ -105,31 +105,47 @@ function init() {
         
       })
     }, 1000)
+    */
 
-    
+    setInterval(() => {
+      let handCurrentPosition = 15
+      river.forEach((cell, i) => {
+        if (cell.className === 'riverBlue hand') {
+          cell.classList.remove('hand')
+          handCurrentPosition = i - 1
+          river[handCurrentPosition].classList.add('hand')
+        }
+      })
+      if (handCurrentPosition === 0) {
+        handCurrentPosition = width
+      }
+    }, 1000)
+
 
     //adding lipstick lid to game 
-    cells[50].classList.add('lipstickLid')
-    cells[53].classList.add('lipstickLid')
-    cells[56].classList.add('lipstickLid')
-    cells[61].classList.add('lipstickLid')
-    cells[65].classList.add('lipstickLid')
+    //cells[50].classList.add('lipstickLid')
+    //cells[53].classList.add('lipstickLid')
+    //cells[56].classList.add('lipstickLid')
+    //cells[61].classList.add('lipstickLid')
+    //cells[65].classList.add('lipstickLid')
     cells[68].classList.add('lipstickLid')
-    cells[72].classList.add('lipstickLid')
-    cells[74].classList.add('lipstickLid')
-    cells[79].classList.add('lipstickLid')
+    //cells[72].classList.add('lipstickLid')
+    //cells[74].classList.add('lipstickLid')
+    //cells[79].classList.add('lipstickLid')
 
 
     const river = cells.slice(10, 40)
-    const lidInterval = setInterval(() => {
-      road.forEach((cell, index) => {
-        if (cell.className === 'lipstickLid') {
+    setInterval(() => {
+      let lipstickLidCurrentPosition = 68
+      road.forEach((cell, i) => {
+        if (cell.className === 'roadGrey lipstickLid') {
           cell.classList.remove('lipstickLid')
-          road[index - 1].classList.add('lipstickLid')
+          lipstickLidCurrentPosition = i - 1
+          road[lipstickLidCurrentPosition].classList.add('lipstickLid')
         }
-        //if (lipstickLidCurrentPosition % width !== 0) {
-        //  lipstickLidCurrentPosition + width
-        //}
+        if (lipstickLidCurrentPosition === 0){
+          lipstickLidCurrentPosition = width
+        }
       })
     }, 1000)
     
@@ -173,6 +189,7 @@ function init() {
     if (lipstickCurrentPosition === 1 || lipstickCurrentPosition === 4 || lipstickCurrentPosition === 8) {
       window.alert('You won!! Well done') 
     }
+
   
     if (cells[lipstickCurrentPosition].classList.contains('riverBlue') || cells[lipstickCurrentPosition].classList.contains('lipstickLid')) {
       console.log('oops')
