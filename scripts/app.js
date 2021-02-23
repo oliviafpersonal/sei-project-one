@@ -89,24 +89,6 @@ function init() {
     //cells[36].classList.add('hand')
     
     let handCurrentPosition = 15
-    /*
-    setInterval(() => {
-      //console.log(handInterval)
-      river.forEach((cell, index) => { 
-        if (cell.className === 'hand') {
-          cell.classList.remove('hand')
-          handCurrentPosition -= 1
-          cell[handCurrentPosition].classList.add('hand')
-          console.log(handCurrentPosition)
-        }
-        if (handCurrentPosition === 0) {
-          handCurrentPosition + width
-        }
-        
-      })
-    }, 1000)
-    */
-
     
     const river = cells.slice(10, 40)
 
@@ -138,7 +120,7 @@ function init() {
     //cells[79].classList.add('lipstickLid')
 
     const road = cells.slice(50, 80)
-    
+
     const lidTimer = setInterval(() => {
       let lipstickLidCurrentPosition = 68
       road.forEach((cell, i) => {
@@ -203,6 +185,7 @@ function init() {
     
     if (livesRemaining <= 0) {
       alert(`Opps! All out of lives.. but you scored ${score}`)
+      lipstickCurrentPosition = lipstickStartPosition
     }
 
     addLipstick(lipstickCurrentPosition)
