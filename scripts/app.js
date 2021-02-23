@@ -79,21 +79,21 @@ function init() {
     
     //adding hand to the game 
     //cells[11].classList.add('hand')
-    cells[15].classList.add('hand')
+    //cells[15].classList.add('hand')
     //cells[19].classList.add('hand')
     //cells[21].classList.add('hand')
     //cells[24].classList.add('hand')
     //cells[28].classList.add('hand')
     //cells[30].classList.add('hand')
     //cells[33].classList.add('hand')
-    //cells[36].classList.add('hand')
+    cells[36].classList.add('hand')
     
-    let handCurrentPosition = 15
+    let handCurrentPosition = 36
     
     const river = cells.slice(10, 40)
 
     const handTimer = setInterval(() => {
-      let handCurrentPosition = 15
+      let handCurrentPosition = 36
       river.forEach((cell, i) => {
         if (cell.className === 'riverBlue hand') {
           cell.classList.remove('hand')
@@ -106,7 +106,6 @@ function init() {
       }
     }, 1000)
     
-
 
     //adding lipstick lid to game 
     //cells[50].classList.add('lipstickLid')
@@ -181,6 +180,9 @@ function init() {
       console.log('oops')
       livesRemaining -- 
       livesDisplay.innerHTML = livesRemaining
+      lipstickCurrentPosition = lipstickStartPosition
+    } else if (cells[lipstickCurrentPosition].classList.contains('hand')) {
+      //livesRemaining = livesRemaining 
     }
     
     if (livesRemaining <= 0) {
