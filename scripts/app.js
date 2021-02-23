@@ -18,11 +18,7 @@ function init() {
   const lipstickClass = 'lipstick'
   const lipstickStartPosition = 95
   let lipstickCurrentPosition = 95
-  
-  
 
-  let lidTimer 
-  
   const road = cells.slice(50, 80)
   const river = cells.slice(10, 40)
 
@@ -76,56 +72,31 @@ function init() {
     cells[1].classList.add('lipsHome')
     cells[4].classList.add('lipsHome')
     cells[8].classList.add('lipsHome')
-    
-    //adding hand to the game 
-    //cells[11].classList.add('hand')
-    //cells[15].classList.add('hand')
-    //cells[19].classList.add('hand')
-    //cells[21].classList.add('hand')
-    //cells[24].classList.add('hand')
-    //cells[28].classList.add('hand')
-    //cells[30].classList.add('hand')
-    //cells[33].classList.add('hand')
-    cells[36].classList.add('hand')
-    
-    let handCurrentPosition = 36
+
     
     const river = cells.slice(10, 40)
 
-
-    let loop = false
+    let hands = [11, 15, 19, 21, 24, 28, 30, 33]
 
     const handTimer = setInterval(() => {
-      let handCurrentPosition = 36
       river.forEach((cell, i) => {
-        if (cell.className === 'riverBlue hand') {
-          cell.classList.remove('hand')
-          handCurrentPosition = i - 1
-          river[handCurrentPosition].classList.add('hand')
-        }
+        cell.classList.remove('hand')
       })
-      if (handCurrentPosition === river[0]) {
-        handCurrentPosition += width
-      }
+      hands = hands.map((index) => {
+        if (index === 10){ 
+          return 39
+        } else {
+          return index - 1 }
+      })
+      hands.forEach((index) => {
+        cells[index].classList.add('hand')
+      })
     }, 1000)
 
-    
-    
-
-    //adding lipstick lid to game 
-    //cells[50].classList.add('lipstickLid')
-    cells[53].classList.add('lipstickLid')
-    //cells[56].classList.add('lipstickLid')
-    //cells[61].classList.add('lipstickLid')
-    //cells[65].classList.add('lipstickLid')
-    //cells[68].classList.add('lipstickLid')
-    //cells[72].classList.add('lipstickLid')
-    //cells[74].classList.add('lipstickLid')
-    //cells[79].classList.add('lipstickLid')
 
     const road = cells.slice(50, 80)
 
-    let lids = [52, 58, 65, 67, 73, 77]
+    let lids = [50, 53, 56, 61, 65, 68, 72, 74, 79]
 
     const lidTimer = setInterval(() => {
       road.forEach((cell, i) => {
@@ -142,28 +113,6 @@ function init() {
       })
     }, 1000)
 
-    /*
-    const lidTimer = setInterval(() => {
-      let lipstickLidCurrentPosition = 53
-      road.forEach((cell, i) => {
-        if (cell.className === 'roadGrey lipstickLid') {
-          cell.classList.remove('lipstickLid')
-          console.log(lipstickLidCurrentPosition)
-          if (lipstickLidCurrentPosition === 50) {
-            lipstickLidCurrentPosition = 79
-          } else {
-            lipstickLidCurrentPosition = i - 1 
-          }
-          console.log(lipstickLidCurrentPosition)
-          road[lipstickLidCurrentPosition].classList.add('lipstickLid') 
-        }
-      })
-      //if (lipstickLidCurrentPosition === 0) {
-      //  lipstickLidCurrentPosition = width
-      //}
-    }, 1000)
-    */
-    
     
     
   }
