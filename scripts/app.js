@@ -31,14 +31,14 @@ function init() {
       const cell = document.createElement('div')
       //cell.textContent = i
       grid.appendChild(cell)
-      cells.push(cell) //pushing element(that the let loop creates) into empty array
+      cells.push(cell) 
     }
     isolateHomeRow() 
-    //createRiver()
+    createRiver()
     createRoad()
     addGrassOne()
     addGrassTwo()
-
+    firstRow()
     
   }
 
@@ -73,10 +73,16 @@ function init() {
   function addGrassTwo() {
     const ladybird = cells.slice(80, 90)
     ladybird.forEach(row => {
-      row.classList.add('prettyGrass')
+      row.classList.add('firstRows')
     })
   }
 
+  function firstRow() {
+    const firstRowColour = cells.slice(90, 100)
+    firstRowColour.forEach(row => {
+      row.classList.add('firstRows')
+    })
+  }
 
 
 
@@ -94,7 +100,7 @@ function init() {
     
     const river = cells.slice(10, 40)
 
-    let hands = [11, 15, 19, 21, 24, 28, 30, 33]
+    let hands = [11, 12, 13, 15, 19, 21, 24, 28, 29, 30, 33]
 
     const handTimer = setInterval(() => {
       river.forEach((cell, i) => {
@@ -114,7 +120,7 @@ function init() {
 
     const road = cells.slice(50, 80)
 
-    let lids = [50, 53, 56, 61, 65, 68, 72, 74, 79]
+    let lids = [51, 53, 56, 61, 65, 68, 72, 74, 79]
 
     const lidTimer = setInterval(() => {
       road.forEach((cell, i) => {
@@ -176,7 +182,7 @@ function init() {
     }
 
 
-  
+    /*
     if (cells[lipstickCurrentPosition].classList.contains('hand')) {
       livesRemaining * 1
     } else if (cells[lipstickCurrentPosition].classList.contains('riverBlue') || cells[lipstickCurrentPosition].classList.contains('lipstickLid')) {
@@ -185,6 +191,30 @@ function init() {
       livesDisplay.innerHTML = livesRemaining
       lipstickCurrentPosition = lipstickStartPosition
     } 
+    */
+
+    
+    if (cells[lipstickCurrentPosition].classList.contains('hand')) {
+      livesRemaining * 1
+    } else if (cells[lipstickCurrentPosition].classList.contains('lipstickLid')) {
+      console.log('oops')
+      livesRemaining -- 
+      livesDisplay.innerHTML = livesRemaining
+      lipstickCurrentPosition = lipstickStartPosition
+    } else if (cells[lipstickCurrentPosition].classList.contains('riverBlue')) {
+      cells[lipstickCurrentPosition].classList.remove('riverBlue')
+      cells[lipstickCurrentPosition].classList.add('splash')
+      livesRemaining --
+      livesDisplay.innerHTML = livesRemaining
+      //cells[lipstickCurrentPosition].classList.remove('splash')
+      //cells[lipstickCurrentPosition].classList.add('riverBlue')
+      lipstickCurrentPosition = lipstickStartPosition
+    } else if (cells[lipstickCurrentPosition].classList.contains('splash')) {
+      livesRemaining = 0
+      livesDisplay.innerHTML = livesRemaining
+      alert('Oops! Fallen into the same trap I see!')
+    }
+    
 
     if (livesRemaining <= 0) {
       alert(`Opps! All out of lives.. but you scored ${score}`)
