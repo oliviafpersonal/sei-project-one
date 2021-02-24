@@ -2,14 +2,15 @@ function init() {
 
   const startButton = document.getElementById('start')
   const grid = document.querySelector('.grid')
-  const gridWrapper = document.querySelector('.grid-wrapper')
 
-  //scores 
+  //scores & level
   const scoreDisplay = document.querySelector('#score-display')
   const livesDisplay = document.querySelector('#lives-display')
+  const levelDisplay = document.querySelector('#level-display')
   
   let score = 0
   let livesRemaining = 3
+  let currentLevel = 1
 
   const width = 10
   const cellCount = width * width 
@@ -33,7 +34,7 @@ function init() {
       cells.push(cell) //pushing element(that the let loop creates) into empty array
     }
     isolateHomeRow() 
-    createRiver()
+    //createRiver()
     createRoad()
     addGrassOne()
     addGrassTwo()
@@ -168,8 +169,13 @@ function init() {
     }
 
     if (lipstickCurrentPosition === 1 || lipstickCurrentPosition === 4 || lipstickCurrentPosition === 8) {
-      window.alert('You won!! Well done') 
+      window.alert('You Won!!')
+      currentLevel += 1
+      levelDisplay.innerHTML = currentLevel
+      lipstickCurrentPosition = lipstickStartPosition
     }
+
+
   
     if (cells[lipstickCurrentPosition].classList.contains('hand')) {
       livesRemaining * 1
