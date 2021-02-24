@@ -190,11 +190,11 @@ function init() {
     } else if (key === 38 && lipstickCurrentPosition >= width) { //up
       lipstickCurrentPosition -= width
       score += 10
-      highScore = score 
-      highScoreDisplay.innerHTML = highScore
-      if (score >= highScore) {
-        highScoreDisplay.innerHTML = score
-      }
+      //highScore = score 
+      //highScoreDisplay.innerHTML = highScore
+      //if (score >= highScore) {
+      //  highScoreDisplay.innerHTML = score
+      //}
       scoreDisplay.innerHTML = score
     } else if (key === 40 && lipstickCurrentPosition + width <= width * width - 1) { //down
       lipstickCurrentPosition += width
@@ -258,26 +258,18 @@ function init() {
 
     addLipstick(lipstickCurrentPosition)
 
-    //let highScore = localStorage.getItem('highScore')
     
     localStorage.setItem('highScore', 0)
+    const highScore = localStorage.getItem('highScore')
+
 
     if (score > parseInt(localStorage.getItem('highScore'))) {
       localStorage.setItem('highScore', score)
-      highScoreDisplay.innerHTML = localStorage.getItem('highScore')
+      //highScoreDisplay.innerHTML = localStorage.getItem('highScore')
+      //highScoreDisplay.innerHTML = JSON.parse(localStorage.getItem('highScore'))
+      highScoreDisplay.innerHTML = highScore
     }
   }
-  
-  
-
-/*
-  if (highScore > parseInt(highScore)) {
-    localStorage.setItem('highScore', score)
-    highScoreDisplay.innerHTML = highScore
-  }
-  */
-
-  //localStorage.setItem('highScore', JSON.parse(highScore))
   console.log(localStorage)
 
 
