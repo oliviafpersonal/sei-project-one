@@ -66,7 +66,7 @@ function init() {
   function addGrassOne() {
     const grassPatch = cells.slice(40, 50)
     grassPatch.forEach(row => {
-      row.classList.add('grass')
+      row.classList.add('firstRows')
     })
   }
   
@@ -169,7 +169,8 @@ function init() {
       scoreDisplay.innerHTML = score
     } else if (key === 40 && lipstickCurrentPosition + width <= width * width - 1) { //down
       lipstickCurrentPosition += width
-      
+      score -= 10
+      scoreDisplay.innerHTML = score
     } else {
       console.log('INVALID KEY')
     }
