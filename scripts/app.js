@@ -212,7 +212,7 @@ function init() {
     } else if (cells[lipstickCurrentPosition].classList.contains('splash')) {
       livesRemaining = 0
       livesDisplay.innerHTML = livesRemaining
-      alert('Oops! Fallen into the same trap I see!')
+      alert('smh.. how are you gonna fall into the same trap')
     }
     
 
