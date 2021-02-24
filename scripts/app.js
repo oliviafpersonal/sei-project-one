@@ -7,10 +7,15 @@ function init() {
   const scoreDisplay = document.querySelector('#score-display')
   const livesDisplay = document.querySelector('#lives-display')
   const levelDisplay = document.querySelector('#level-display')
+  const highScoreDisplay = document.querySelector('#high-score-display')
+
+
   
   let score = 0
+  let highScore = 0
   let livesRemaining = 3
   let currentLevel = 1
+  
 
   const width = 10
   const cellCount = width * width 
@@ -115,6 +120,25 @@ function init() {
       hands.forEach((index) => {
         cells[index].classList.add('hand')
       })
+      /*
+      if (cells[lipstickCurrentPosition].classList.contains('hand')) {
+        river.forEach((cell, i) => {
+          cell.classList.remove('hand')
+        })
+        hands = hands.map((index) => {
+          return index - 1 }
+        )
+        hands.forEach((index) => {
+          cells[index].classList.add('hand')
+        })
+      }*/
+        
+
+
+
+
+
+      
     }, 1000)
 
 
@@ -166,11 +190,17 @@ function init() {
     } else if (key === 38 && lipstickCurrentPosition >= width) { //up
       lipstickCurrentPosition -= width
       score += 10
+      highScore = score 
+      highScoreDisplay.innerHTML = highScore
+      if (score >= highScore) {
+        highScoreDisplay.innerHTML = score
+      }
       scoreDisplay.innerHTML = score
     } else if (key === 40 && lipstickCurrentPosition + width <= width * width - 1) { //down
       lipstickCurrentPosition += width
       score -= 10
       scoreDisplay.innerHTML = score
+
     } else {
       console.log('INVALID KEY')
     }
@@ -228,9 +258,27 @@ function init() {
 
     addLipstick(lipstickCurrentPosition)
 
+    //let highScore = localStorage.getItem('highScore')
     
-    
+    localStorage.setItem('highScore', 0)
+
+    if (score > parseInt(localStorage.getItem('highScore'))) {
+      localStorage.setItem('highScore', score)
+      highScoreDisplay.innerHTML = localStorage.getItem('highScore')
+    }
   }
+  
+  
+
+/*
+  if (highScore > parseInt(highScore)) {
+    localStorage.setItem('highScore', score)
+    highScoreDisplay.innerHTML = highScore
+  }
+  */
+
+  //localStorage.setItem('highScore', JSON.parse(highScore))
+  console.log(localStorage)
 
 
   document.addEventListener('keyup', handleKeyUp)
