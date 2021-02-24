@@ -39,7 +39,7 @@ function init() {
       cells.push(cell) 
     }
     isolateHomeRow() 
-    createRiver()
+    //createRiver()
     createRoad()
     addGrassOne()
     addGrassTwo()
@@ -190,11 +190,6 @@ function init() {
     } else if (key === 38 && lipstickCurrentPosition >= width) { //up
       lipstickCurrentPosition -= width
       score += 10
-      //highScore = score 
-      //highScoreDisplay.innerHTML = highScore
-      //if (score >= highScore) {
-      //  highScoreDisplay.innerHTML = score
-      //}
       scoreDisplay.innerHTML = score
     } else if (key === 40 && lipstickCurrentPosition + width <= width * width - 1) { //down
       lipstickCurrentPosition += width
@@ -259,18 +254,17 @@ function init() {
     addLipstick(lipstickCurrentPosition)
 
     
-    localStorage.setItem('highScore', 0)
     const highScore = localStorage.getItem('highScore')
-
-
-    if (score > parseInt(localStorage.getItem('highScore'))) {
+    
+    if (highScore !== null) {
+      if (score > highScore) {
+        localStorage.setItem('highScore', score)
+      }
+    } else {
       localStorage.setItem('highScore', score)
-      //highScoreDisplay.innerHTML = localStorage.getItem('highScore')
-      //highScoreDisplay.innerHTML = JSON.parse(localStorage.getItem('highScore'))
-      highScoreDisplay.innerHTML = highScore
     }
+    highScoreDisplay.innerHTML = highScore
   }
-  console.log(localStorage)
 
 
   document.addEventListener('keyup', handleKeyUp)
