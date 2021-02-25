@@ -30,7 +30,7 @@ function init() {
 
 
 
-  // creating the  game grid
+  //! creating the  game grid
   function createGrid(lipstickStartPosition) {
     for (let i = 0; i < cellCount; i++) {
       const cell = document.createElement('div')
@@ -39,7 +39,7 @@ function init() {
       cells.push(cell) 
     }
     isolateHomeRow() 
-    //createRiver()
+    createRiver()
     createRoad()
     addGrassOne()
     addGrassTwo()
@@ -92,7 +92,7 @@ function init() {
 
 
 
-  //button starts the game
+  //!button starts the game
   function startGame() {
     //console.log('game has comenced', startGame)
     addLipstick(lipstickStartPosition)
@@ -167,7 +167,7 @@ function init() {
 
 
 
-  // * add lipstick to grid 
+  //*add lipstick to grid 
   function addLipstick(position) {
     cells[position].classList.add(lipstickClass)
   }
@@ -177,7 +177,7 @@ function init() {
     cells[position].classList.remove(lipstickClass)
   }
 
-  //lipstick/player movement 
+  //!lipstick/player movement 
   function handleKeyUp(event) {
     const key = event.keyCode //event.keyCode finds out which key is clicked - each key registers a new number 
 

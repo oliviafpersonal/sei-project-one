@@ -60,7 +60,7 @@ body {
 }
 
 p {
-  font-size: 30px;
+  font-size: 25px;
   border-radius: 4px;
 
 }
@@ -68,7 +68,7 @@ p {
 
 
 .grid-wrapper {
-  height: 90vh;
+  height: 75vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -136,3 +136,34 @@ p {
   background-color: plum;
 }
 
+/*
+@media (min-height: 900px) {
+  .grid-wrapper {
+    height: 80vh;
+  }
+}
+*/
+
+
+
+@media (max-height: 650px) {
+  .header {
+    height: 150px;
+  }
+
+  .grid-wrapper {
+    height: 110vh;
+  }
+  
+  p {
+    font-size: 17px;
+  }
+
+  h1 {
+    font-size: 25px;
+  }
+
+  button {
+    font-size: 17px;
+  }
+}
