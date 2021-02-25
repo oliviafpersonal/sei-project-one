@@ -39,7 +39,7 @@ function init() {
       cells.push(cell) 
     }
     isolateHomeRow() 
-    //createRiver()
+    createRiver()
     createRoad()
     addGrassOne()
     addGrassTwo()
@@ -102,16 +102,10 @@ function init() {
     cells[4].classList.add('lipsHome')
     cells[8].classList.add('lipsHome')
 
-    const highScore = localStorage.getItem('highScore')
     
-    if (highScore !== null) {
-      if (score > highScore) {
-        localStorage.setItem('highScore', score)
-      }
-    } else {
-      localStorage.setItem('highScore', score)
-    }
-    highScoreDisplay.innerHTML = highScore
+    
+    
+    
 
     
     const river = cells.slice(10, 40)
@@ -216,6 +210,20 @@ function init() {
       }
     }
 
+    if (currentLevel >= 4) {
+      cells[1].classList.remove('lipsHome')
+      if (lipstickCurrentPosition === 1) {
+        alert('Oops!')
+        livesRemaining --
+        livesDisplay.innerHTML = livesRemaining
+        lipstickCurrentPosition = lipstickStartPosition
+      }
+    }
+
+    if (currentLevel === 5) {
+      alert(`You have defeated Lipper with a score of ${score}`)
+    }
+
     if (lipstickCurrentPosition === 1 || lipstickCurrentPosition === 4 || lipstickCurrentPosition === 8) {
       window.alert('You Won!!')
       currentLevel += 1
@@ -278,6 +286,18 @@ function init() {
     }
 
     addLipstick(lipstickCurrentPosition)
+
+    const highScore = localStorage.getItem('highScore')
+    
+    if (highScore !== null) {
+      if (score > highScore) {
+        localStorage.setItem('highScore', score)
+      }
+    } else {
+      localStorage.setItem('highScore', score)
+    }
+    highScoreDisplay.innerHTML = highScore
+    
   }
 
 
