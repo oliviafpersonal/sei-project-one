@@ -39,7 +39,7 @@ function init() {
       cells.push(cell) 
     }
     isolateHomeRow() 
-    createRiver()
+    //createRiver()
     createRoad()
     addGrassOne()
     addGrassTwo()
@@ -102,6 +102,17 @@ function init() {
     cells[4].classList.add('lipsHome')
     cells[8].classList.add('lipsHome')
 
+    const highScore = localStorage.getItem('highScore')
+    
+    if (highScore !== null) {
+      if (score > highScore) {
+        localStorage.setItem('highScore', score)
+      }
+    } else {
+      localStorage.setItem('highScore', score)
+    }
+    highScoreDisplay.innerHTML = highScore
+
     
     const river = cells.slice(10, 40)
 
@@ -132,12 +143,6 @@ function init() {
           cells[index].classList.add('hand')
         })
       }*/
-        
-
-
-
-
-
       
     }, 1000)
 
@@ -200,12 +205,35 @@ function init() {
       console.log('INVALID KEY')
     }
 
+    // * remove a home if level 3 
+    if (currentLevel >= 3) {
+      cells[4].classList.remove('lipsHome')
+      if (lipstickCurrentPosition === 4) {
+        alert('Oops!')
+        livesRemaining --
+        livesDisplay.innerHTML = livesRemaining
+        lipstickCurrentPosition = lipstickStartPosition
+      }
+    }
+
     if (lipstickCurrentPosition === 1 || lipstickCurrentPosition === 4 || lipstickCurrentPosition === 8) {
       window.alert('You Won!!')
       currentLevel += 1
       levelDisplay.innerHTML = currentLevel
       lipstickCurrentPosition = lipstickStartPosition
     }
+
+    // * make level 2 + harder 
+    if (currentLevel >= 2) {
+      if (lipstickCurrentPosition === 0 || lipstickCurrentPosition === 2 || lipstickCurrentPosition === 3 || lipstickCurrentPosition === 5 || lipstickCurrentPosition === 6 || lipstickCurrentPosition === 7 || lipstickCurrentPosition === 9) {
+        alert('Oppsie, you cant do that anymore!')
+        livesRemaining --
+        livesDisplay.innerHTML = livesRemaining
+        lipstickCurrentPosition = lipstickStartPosition
+      }
+    }
+
+    
 
 
     /*
@@ -232,8 +260,6 @@ function init() {
       cells[lipstickCurrentPosition].classList.add('splash')
       livesRemaining --
       livesDisplay.innerHTML = livesRemaining
-      //cells[lipstickCurrentPosition].classList.remove('splash')
-      //cells[lipstickCurrentPosition].classList.add('riverBlue')
       lipstickCurrentPosition = lipstickStartPosition
     } else if (cells[lipstickCurrentPosition].classList.contains('splash')) {
       livesRemaining = 0
@@ -252,18 +278,6 @@ function init() {
     }
 
     addLipstick(lipstickCurrentPosition)
-
-    
-    const highScore = localStorage.getItem('highScore')
-    
-    if (highScore !== null) {
-      if (score > highScore) {
-        localStorage.setItem('highScore', score)
-      }
-    } else {
-      localStorage.setItem('highScore', score)
-    }
-    highScoreDisplay.innerHTML = highScore
   }
 
 
