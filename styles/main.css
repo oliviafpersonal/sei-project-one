@@ -133,27 +133,18 @@ p {
   background-color: plum;
 }
 
-/*
-@media (min-height: 900px) {
-  .grid-wrapper {
-    height: 80vh;
-  }
-}
-*/
 
-
-
-@media screen and (max-height: 700px) {
+@media screen and (max-height: 1000px) {
   .header {
     height: 150px;
     padding-top: 2px;
   }
 
-  .grid-wrapper {
-    height: 20vh;
+  .grid-wrapper .grid {
+    height: 75vh;
+    margin-top: 150px;
+    width: 75vh;
   }
-
-  
   
   p {
     font-size: 17px;
@@ -161,8 +152,6 @@ p {
 
   h1 {
     font-size: 25px;
-    display: none;
-    color: blue;
   }
 
   #start {
