@@ -94,7 +94,6 @@ function init() {
 
   //!button starts the game
   function startGame() {
-    //console.log('game has comenced', startGame)
     addLipstick(lipstickStartPosition)
     
     //adding the lips into the game
@@ -182,7 +181,7 @@ function init() {
 
     removeLipstick(lipstickCurrentPosition)
     
-    if (key === 39 && lipstickCurrentPosition % width !== width - 1) { //right. stops the player being able to leave the grid
+    if (key === 39 && lipstickCurrentPosition % width !== width - 1) { //right
       lipstickCurrentPosition++
     } else if (key === 37 && lipstickCurrentPosition % width !== 0) { //left
       lipstickCurrentPosition--
@@ -221,7 +220,7 @@ function init() {
     }
 
     if (currentLevel === 5) {
-      alert(`You have defeated Lipper with a score of ${score}`)
+      alert(`GAME OVER!! You have defeated Lipper with a score of ${score}`)
     }
 
     if (lipstickCurrentPosition === 1 || lipstickCurrentPosition === 4 || lipstickCurrentPosition === 8) {
@@ -241,19 +240,7 @@ function init() {
       }
     }
 
-    
-
-
-    /*
-    if (cells[lipstickCurrentPosition].classList.contains('hand')) {
-      livesRemaining * 1
-    } else if (cells[lipstickCurrentPosition].classList.contains('riverBlue') || cells[lipstickCurrentPosition].classList.contains('lipstickLid')) {
-      console.log('oops')
-      livesRemaining -- 
-      livesDisplay.innerHTML = livesRemaining
-      lipstickCurrentPosition = lipstickStartPosition
-    } 
-    */
+  
 
     
     if (cells[lipstickCurrentPosition].classList.contains('hand')) {
@@ -277,7 +264,7 @@ function init() {
     
 
     if (livesRemaining <= 0) {
-      alert(`Opps! All out of lives.. but you scored ${score}`)
+      alert(`Opps! All out of lives... you scored ${score}`)
       lipstickCurrentPosition = lipstickStartPosition
       score = 0
       scoreDisplay.innerHTML = score
