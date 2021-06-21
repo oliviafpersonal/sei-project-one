@@ -10,15 +10,15 @@ function init() {
   const highScoreDisplay = document.querySelector('#high-score-display')
 
 
-  
+
   let score = 0
   let highScore = 0
   let livesRemaining = 3
   let currentLevel = 1
-  
+
 
   const width = 10
-  const cellCount = width * width 
+  const cellCount = width * width
   const cells = []
 
   const lipstickClass = 'lipstick'
@@ -36,25 +36,25 @@ function init() {
       const cell = document.createElement('div')
       //cell.textContent = i
       grid.appendChild(cell)
-      cells.push(cell) 
+      cells.push(cell)
     }
-    isolateHomeRow() 
+    isolateHomeRow()
     createRiver()
     createRoad()
     addGrassOne()
     addGrassTwo()
     firstRow()
-    
+
   }
 
-  function isolateHomeRow () {
+  function isolateHomeRow() {
     const homeRow = cells.slice(0, 10)
     homeRow.forEach(row => {
       row.classList.add('topRow')
     })
   }
 
-  function createRoad () {
+  function createRoad() {
     const road = cells.slice(50, 80)
     road.forEach(row => {
       row.classList.add('roadGrey')
@@ -74,7 +74,7 @@ function init() {
       row.classList.add('firstRows')
     })
   }
-  
+
   function addGrassTwo() {
     const ladybird = cells.slice(80, 90)
     ladybird.forEach(row => {
@@ -95,18 +95,18 @@ function init() {
   //!button starts the game
   function startGame() {
     addLipstick(lipstickStartPosition)
-    
+
     //adding the lips into the game
     cells[1].classList.add('lipsHome')
     cells[4].classList.add('lipsHome')
     cells[8].classList.add('lipsHome')
 
-    
-    
-    
-    
 
-    
+
+
+
+
+
     const river = cells.slice(10, 40)
 
     let hands = [11, 12, 13, 15, 19, 21, 24, 28, 29, 30, 33]
@@ -116,27 +116,17 @@ function init() {
         cell.classList.remove('hand')
       })
       hands = hands.map((index) => {
-        if (index === 10){ 
+        if (index === 10) {
           return 39
         } else {
-          return index - 1 }
+          return index - 1
+        }
       })
       hands.forEach((index) => {
         cells[index].classList.add('hand')
       })
-      /*
-      if (cells[lipstickCurrentPosition].classList.contains('hand')) {
-        river.forEach((cell, i) => {
-          cell.classList.remove('hand')
-        })
-        hands = hands.map((index) => {
-          return index - 1 }
-        )
-        hands.forEach((index) => {
-          cells[index].classList.add('hand')
-        })
-      }*/
-      
+
+
     }, 1000)
 
 
@@ -149,18 +139,19 @@ function init() {
         cell.classList.remove('lipstickLid')
       })
       lids = lids.map((index) => {
-        if (index === 50){
+        if (index === 50) {
           return 79
         } else {
-          return index - 1 }
+          return index - 1
+        }
       })
       lids.forEach((index) => {
         cells[index].classList.add('lipstickLid')
       })
     }, 1000)
 
-    
-    
+
+
   }
 
 
@@ -180,7 +171,7 @@ function init() {
     const key = event.keyCode //event.keyCode finds out which key is clicked - each key registers a new number 
 
     removeLipstick(lipstickCurrentPosition)
-    
+
     if (key === 39 && lipstickCurrentPosition % width !== width - 1) { //right
       lipstickCurrentPosition++
     } else if (key === 37 && lipstickCurrentPosition % width !== 0) { //left
@@ -203,7 +194,7 @@ function init() {
       cells[4].classList.remove('lipsHome')
       if (lipstickCurrentPosition === 4) {
         alert('Oops!')
-        livesRemaining --
+        livesRemaining--
         livesDisplay.innerHTML = livesRemaining
         lipstickCurrentPosition = lipstickStartPosition
       }
@@ -213,7 +204,7 @@ function init() {
       cells[1].classList.remove('lipsHome')
       if (lipstickCurrentPosition === 1) {
         alert('Oops!')
-        livesRemaining --
+        livesRemaining--
         livesDisplay.innerHTML = livesRemaining
         lipstickCurrentPosition = lipstickStartPosition
       }
@@ -234,26 +225,26 @@ function init() {
     if (currentLevel >= 2) {
       if (lipstickCurrentPosition === 0 || lipstickCurrentPosition === 2 || lipstickCurrentPosition === 3 || lipstickCurrentPosition === 5 || lipstickCurrentPosition === 6 || lipstickCurrentPosition === 7 || lipstickCurrentPosition === 9) {
         alert('Oppsie, you cant do that anymore!')
-        livesRemaining --
+        livesRemaining--
         livesDisplay.innerHTML = livesRemaining
         lipstickCurrentPosition = lipstickStartPosition
       }
     }
 
-  
 
-    
+
+
     if (cells[lipstickCurrentPosition].classList.contains('hand')) {
       livesRemaining * 1
     } else if (cells[lipstickCurrentPosition].classList.contains('lipstickLid')) {
       console.log('oops')
-      livesRemaining -- 
+      livesRemaining--
       livesDisplay.innerHTML = livesRemaining
       lipstickCurrentPosition = lipstickStartPosition
     } else if (cells[lipstickCurrentPosition].classList.contains('riverBlue')) {
       cells[lipstickCurrentPosition].classList.remove('riverBlue')
       cells[lipstickCurrentPosition].classList.add('splash')
-      livesRemaining --
+      livesRemaining--
       livesDisplay.innerHTML = livesRemaining
       lipstickCurrentPosition = lipstickStartPosition
     } else if (cells[lipstickCurrentPosition].classList.contains('splash')) {
@@ -261,7 +252,7 @@ function init() {
       livesDisplay.innerHTML = livesRemaining
       alert('smh.. how are you gonna fall into the same trap')
     }
-    
+
 
     if (livesRemaining <= 0) {
       alert(`Opps! All out of lives... you scored ${score}`)
@@ -275,7 +266,7 @@ function init() {
     addLipstick(lipstickCurrentPosition)
 
     const highScore = localStorage.getItem('highScore')
-    
+
     if (highScore !== null) {
       if (score > highScore) {
         localStorage.setItem('highScore', score)
@@ -284,7 +275,7 @@ function init() {
       localStorage.setItem('highScore', score)
     }
     highScoreDisplay.innerHTML = highScore
-    
+
   }
 
 
