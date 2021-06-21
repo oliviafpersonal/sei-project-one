@@ -25,10 +25,6 @@ function init() {
   const lipstickStartPosition = 95
   let lipstickCurrentPosition = 95
 
-  const road = cells.slice(50, 80)
-  const river = cells.slice(10, 40)
-
-
 
   //! creating the  game grid
   function createGrid(lipstickStartPosition) {
