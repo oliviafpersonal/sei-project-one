@@ -11,7 +11,8 @@ Technologies Used:
 - CSS
 - GitHub 
 
-Overview 
+Overview:
+
 My Frogger game was designed with a makeup theme. 
 I chose to do this as it incorporated a part of my personality whilst still sticking to the original and classic functionality of the game. 
 The user is in control of a lipstick which can be moved using the up, down, right and left arrows. 
