@@ -102,11 +102,6 @@ function init() {
     cells[8].classList.add('lipsHome')
 
 
-
-
-
-
-
     const river = cells.slice(10, 40)
 
     let hands = [11, 12, 13, 15, 19, 21, 24, 28, 29, 30, 33]
