@@ -3,7 +3,7 @@ Frogger
 
 This game was my first attempt to use all the vanilla JavaScript skills I had learnt so far, 4 weeks into the General Assembly Software Engineering Immersive course. 
 
-Task: To build a grid-based browser game with pure Javascript in a 7 week timeline. 
+Task: To build a grid-based browser game with pure Javascript in a one week timeline. 
 
 Technologies Used:
 - JavaScript ES6
@@ -28,6 +28,7 @@ Once I had chosen to create my version of Frogger, I made a rough plan with set 
 Bits of code: 
 
 1. adding and removing the lipstick/user based on the position - handlekeyup event 
+Screenshot 2021-06-21 at 16.10.48
 
 2. SetInterval to create the formation of the hands 
 
