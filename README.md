@@ -29,9 +29,13 @@ Bits of code:
 
 1. adding and removing the lipstick/user based on the position - handlekeyup event 
 
+In order to allow the user to control the position of the lipstick with the arrow keys I started by creating two small functions which would add the lipstick to the current position of the user. 
+I then created a larger handleKeyUp function within which I used an if statement to ensure the user remained within the pre set grid for the game. This also allowed me to set out how I wanted to increase and decrease the user's score based on which direction they moved the lipstick in. 
 
 
-2. SetInterval to create the formation of the hands 
+
+2. SetInterval to create the formation of the hands.
+
 I started by defining the starter positions for 11 different hand gifs in an array. Then, I created a setInterval function within which I used two forEach functions and also a map in order to ensure the hand gifs were on a constant loop. 
 
 
