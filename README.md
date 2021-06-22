@@ -3,6 +3,8 @@ Frogger
 
 This game was my first attempt to use all the vanilla JavaScript skills I had learnt so far, 4 weeks into the General Assembly Software Engineering Immersive course. 
 
+Deployed project:  http://bit.ly/lipper1
+
 Task: To build a grid-based browser game with pure Javascript in a one week timeline. 
 
 Technologies Used:
@@ -40,6 +42,8 @@ I started by defining the starter positions for 11 different hand gifs in an arr
 
 
 Challenges:
+The user started on cell 95, but once any of the keys were clicked the user would jump to 
+
 
 Wins:
 
