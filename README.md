@@ -42,7 +42,11 @@ I started by defining the starter positions for 11 different hand gifs in an arr
 
 
 Challenges:
-The user started on cell 95, but once any of the keys were clicked the user would jump to 
+Ensuring both the hand gifs and the lipstick lids were on a constant loop was a challenge to begin with, but after some tinkering I managed to get the setInterval working to solve this issues. 
+
+Remaining bugs: 
+The browser pop up informing the user that they have completed the level shows up before the lipstick is shown reaching the lips. 
+The splash gifs which are added to the cells when/if the user falls into the river do not disappear once the user completes the level - this only happens if the game is restarted. 
 
 
 Wins:
