@@ -28,10 +28,12 @@ Once I had chosen to create my version of Frogger, I made a rough plan with set 
 Bits of code: 
 
 1. adding and removing the lipstick/user based on the position - handlekeyup event 
-![](Screenshot 2021-06-21 at 16.10.48)
+
 
 
 2. SetInterval to create the formation of the hands 
+I started by defining the starter positions for 11 different hand gifs in an array. Then, I created a setInterval function within which I used two forEach functions and also a map in order to ensure the hand gifs were on a constant loop. 
+
 
 Challenges:
 
