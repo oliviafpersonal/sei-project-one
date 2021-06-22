@@ -53,4 +53,9 @@ The splash gifs which are added to the cells when/if the user falls into the riv
 
 Wins:
 
+Overcoming the obstacles I faced throughout the development of the game felt like a very exciting accomplishment, especially as this was the first project I had ever completed using JavaScript.
+
 Future Add ons:
+
+Creating a smoother experience for the user. 
+Allowing for the game to be usable not only on a desktop, but also on a tablet or mobile phone. 
