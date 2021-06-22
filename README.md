@@ -28,7 +28,8 @@ Once I had chosen to create my version of Frogger, I made a rough plan with set 
 Bits of code: 
 
 1. adding and removing the lipstick/user based on the position - handlekeyup event 
-Screenshot 2021-06-21 at 16.10.48
+![](Screenshot 2021-06-21 at 16.10.48)
+
 
 2. SetInterval to create the formation of the hands 
 
